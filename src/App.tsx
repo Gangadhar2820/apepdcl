@@ -12,7 +12,7 @@ import Error from "./components/Error";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/apepdcl">
       <Header />
         <Routes>
           <Route path="/" element={<Home/>}/>
@@ -20,7 +20,7 @@ function App() {
           <Route path="/searchserviceno/:serviceno" element={<SearchServiceNo/>}/>
           <Route path="/searchareacode/:areacode" element={<SearchAreaCode/>}/>
           <Route path="/maps" element={<Maps/>}/>
-          <Route path={"*"} element={<Error/>} />
+          <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>
     </>
