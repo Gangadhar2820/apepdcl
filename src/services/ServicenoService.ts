@@ -45,4 +45,16 @@ export async function getConsumerDataByServiceNo(
   return consumer;
 }
 
+export async function updateConsumer(areacode:string | null |undefined,serviceno:string | null | undefined,data:Consumer | null | undefined){
+
+  const response = await axios.post(`https://apepdclserver.onrender.com/updateconsumer/${areacode}/${serviceno}`,data,{
+    headers:{
+      'Content-Type':'application/json'
+    }
+  })
+
+  return response;
+
+}
+
 export {};

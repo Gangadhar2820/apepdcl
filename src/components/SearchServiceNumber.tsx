@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Consumer, getConsumerDataByServiceNo } from "../services/ServicenoService";
+import { Consumer, getConsumerDataByServiceNo, updateConsumer } from "../services/ServicenoService";
+import {Toaster , toast} from "react-hot-toast";
 
 function SearchServiceNumber() {
   const [areacode, setAreacode] = useState("label");
@@ -9,11 +10,13 @@ function SearchServiceNumber() {
   const [isLoading, setIsLoading] = useState(false);
   const [isUserPresent,setIsUserPresent] = useState(false);
   const [showNotFound,setShowNotFound] = useState(false);
+  const [isEditable,setIsEditable] = useState(false);
+  const [isSaving,setIsSaving] = useState(false);
 
 
   useEffect(() => {
    
-  }, [isFormValid,consumer,isLoading,isUserPresent]);
+  }, [isFormValid,consumer,isLoading,isUserPresent,isSaving]);
 
   const validateForm =  () => {
     setIsFormValid(false);
@@ -43,6 +46,26 @@ function SearchServiceNumber() {
 
     }
   };
+
+  const handleFormSave = ()=>{
+    setIsEditable(false);
+    setIsSaving(true);
+    updateConsumer(areacode,serviceno,consumer).then((data)=>{
+        setIsSaving(false);
+        if(data.status == 200){
+        let toastAreaCode = data.data.AREA_CODE;
+        let toastServiceNo = data.data.SERVICE_NO;
+        let updatedCount = data.data.result.matchedCount;
+        if(updatedCount===1){
+          toast.success(`${toastAreaCode}${toastServiceNo} updated successfully`,{
+            duration:3000,
+            position:"top-center"
+          })
+        }
+        }
+    })
+
+  }
 
   return (
     <>
@@ -100,47 +123,80 @@ function SearchServiceNumber() {
               <caption className="text-center h5 p-1" style={{color:"blue"}}>{`115466${consumer?.AREA_CODE}${consumer?.SERVICE_NO}`}</caption>
                  <tbody>
                  <tr>
-                     <td>
-                       <b>Area Code</b>
-                     </td>
-                     <td>{consumer?.AREA_CODE}</td>
+                    
+                     <th scope="row">Area Code</th>
+                     <td><input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly disabled type="text" value={consumer?.AREA_CODE}></input></td>
                    </tr>
                    <tr>
                      <th scope="row">Service No</th>
-                     <td>{consumer?.SERVICE_NO}</td>
+                     <td><input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly disabled type="text" value={consumer?.SERVICE_NO}></input></td>
                    </tr>
                    <tr>
                      <th scope="row">Consumer Name</th>
-                     <td>{consumer?.CONSUMER_NAME}</td>
+                     <td> <input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly={!isEditable} disabled={!isEditable}
+                      type="text" value={consumer?.CONSUMER_NAME} 
+                      onChange={(e)=>{setConsumer((prevConsumer)=>prevConsumer? {...prevConsumer , CONSUMER_NAME : e.target.value.toString()} :null)}}></input></td>
                    </tr>
                    <tr>
                      <th scope="row">Nick Name</th>
-                     <td>{consumer?.NICK_NAME}</td>
+                     <td> <input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly={!isEditable} disabled={!isEditable}
+                      type="text" value={consumer?.NICK_NAME} 
+                      onChange={(e)=>{setConsumer((prevConsumer)=>prevConsumer? {...prevConsumer , NICK_NAME : e.target.value.toString()} :null)}}></input></td>
                    </tr>
                    <tr>
                      <th scope="row"> Parent Name</th>
-                     <td>{consumer?.PARENT_NAME}</td>
+                     <td> <input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly={!isEditable} disabled={!isEditable} 
+                     type="text" value={consumer?.PARENT_NAME} 
+                     onChange={(e)=>{setConsumer((prevConsumer)=>prevConsumer? {...prevConsumer , PARENT_NAME : e.target.value.toString()} :null)}}></input></td>
+
                    </tr>
                    <tr>
                      <th scope="row">Current User</th>
-                     <td>{consumer?.CURRENT_USER}</td>
+                     <td> <input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly={!isEditable} disabled={!isEditable}
+                      type="text" value={consumer?.CURRENT_USER}
+                      onChange={(e)=>{setConsumer((prevConsumer)=>prevConsumer? {...prevConsumer , CURRENT_USER : e.target.value.toString()} :null)}}></input></td>
+
                    </tr>
                    <tr>
                      <th scope="row">Phone No</th>
-                     <td>{consumer?.PHONE_NO}</td>
+                     <td> <input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly={!isEditable} disabled={!isEditable} 
+                     type="text" value={consumer?.PHONE_NO}
+                    onChange={(e)=>{setConsumer((prevConsumer)=>prevConsumer? {...prevConsumer , PHONE_NO : e.target.value.toString()} :null)}}></input></td>
                    </tr>
                    <tr>
                      <th scope="row">Location</th>
-                     <td>{consumer?.LOCATION}</td>
+                     <td> <input style={{width:"100%",padding:"2px 5px"}} className="form-control" readOnly={!isEditable} disabled={!isEditable}
+                      type="text" value={consumer?.LOCATION}
+                      onChange={(e)=>{setConsumer((prevConsumer)=>prevConsumer? {...prevConsumer , LOCATION : e.target.value.toString()} :null)}}></input></td>
+                   </tr>
+                   <tr className="">
+                    <td className="" colSpan={2}>
+                      <div className="container-fluid d-flex justify-content-between">
+                     {!isEditable? <>
+                      <button type="button"  className="btn btn-danger"><i className="bi bi-trash3-fill"></i> Delete</button>
+                      <button type="button"  className="btn btn-primary" onClick={()=> setIsEditable(true)}><i className="bi bi-pencil-square"></i> Edit</button></>:
+                      <button type="button" className="btn btn-success"
+                      onClick={handleFormSave}><i className="bi bi-floppy-fill"></i> Save</button> }
+                    </div></td>
                    </tr>
                  </tbody>
                </table>)}
 
-               {(showNotFound && isFormValid) && "user doesn't exist"}
+               { isSaving &&  <div className="spinner-grow text-success" style={{ width: "90px", height: "90px",position:"absolute",top:"50%",left:"40%" }} role="status">
+                <span role="status" style={{color: "white",position: "absolute",top: "30px",left: "20px",}}>
+                  Saving...
+                </span>
+              </div> }
+
+               {(showNotFound && isFormValid) && <p style={{color:"red"}}>Consumer doesn't exist with service no `{areacode}{serviceno}`</p>}
+
                
           </div>
         </div>
       </div>
+      <Toaster/>
+
+     
     </>
   );
 }
