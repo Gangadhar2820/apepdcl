@@ -57,4 +57,13 @@ export async function updateConsumer(areacode:string | null |undefined,serviceno
 
 }
 
+export async function getAreaWiseData(areacode:string){
+  const response =await  axios.get(`https://apepdclserver.onrender.com/searchareacode/${areacode}`);
+  const data = await response.data;
+  return data;
+
+}
+  
+
+
 export {};

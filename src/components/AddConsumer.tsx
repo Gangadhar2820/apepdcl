@@ -1,9 +1,10 @@
+import { Button } from 'primereact/button';
 import React from 'react'
 
 function AddConsumer() {
-  return (
-    <div>AddConsumer</div>
-  )
+  return <>
+
+  </>
 }
 
 export default AddConsumer

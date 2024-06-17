@@ -1,4 +1,8 @@
 import "./App.css";
+import 'primereact/resources/themes/saga-blue/theme.css'; 
+import 'primereact/resources/primereact.min.css';         
+import 'primeicons/primeicons.css';                       
+import 'primeflex/primeflex.css';  
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 import Header from "./components/Header";
@@ -9,6 +13,7 @@ import Maps from "./components/Maps";
 import Error from "./components/Error";
 import SearchServiceNumber from "./components/SearchServiceNumber";
 
+
 function App() {
   return (
     <>
@@ -18,6 +23,8 @@ function App() {
           <Route path="/" element={<SearchServiceNumber/>}/>
           <Route path="/addconsumer" element={<AddConsumer/>}/>
           <Route path="/searchserviceno" element={<SearchServiceNumber/>}>
+          <Route path=":areacode/:serviceno" element={<SearchServiceNumber/>}>
+          </Route>
           </Route>
           <Route path="/searchareacode" element={<SearchAreaCode/>}/>
           <Route path="/maps" element={<Maps/>}/>

@@ -60,7 +60,7 @@ function SearchServiceNumber() {
         let updatedCount = data.data.result.matchedCount;
         if(updatedCount===1){
           toast.success(`${toastAreaCode}${toastServiceNo} updated successfully`,{
-            duration:3000,
+            duration:2000,
             position:"top-center",
             style:{
               color:"green"

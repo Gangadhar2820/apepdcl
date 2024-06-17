@@ -18,3 +18,33 @@ code {
   padding:0;
   box-sizing: border-box;
 }
+
+.custom-datatable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.custom-datatable th,
+.custom-datatable td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.custom-datatable .p-datatable .p-datatable-thead > tr > th {
+  background-color: #007bff !important; /* Blue background color for table header */
+  color: #ffffff; /* Text color for table header */
+}
+/* styles.css */
+
+/* Target the icon used for sorting in DataTable */
+.p-datatable .p-sortable-column .p-sortable-column-icon {
+  color: #ffffff !important; /* Change the color to red */
+}
+
+.custom-datatable .p-datatable-tbody > tr:nth-child(odd) {
+  background-color: #ffffff; /* Default background color for odd rows */
+}
+
+.custom-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background-color: #cce5ff; /* Blue background color for even rows */
+}
