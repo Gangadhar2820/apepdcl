@@ -1,8 +1,33 @@
-import React from "react";
+import React ,{useRef , useEffect} from "react";
 import myImage from "../images/mainlogo.png";
 import { Link } from "react-router-dom";
 
 function Header() {
+
+  const navbarRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const navbar = navbarRef.current;
+      if (!navbar) return; // Add a null check
+
+      const isNavbarOpen = navbar.classList.contains("show");
+      const isClickInsideNavbar = navbar.contains(event.target as Node); // Ensure target is a Node
+      const isNavbarToggler = (event.target as Element).classList.contains("navbar-toggler");
+
+      if (isNavbarOpen && !isClickInsideNavbar && !isNavbarToggler) {
+        const toggler = document.querySelector(".navbar-toggler") as HTMLElement;
+        toggler?.click();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+  
   return (
     <>
       <nav className="navbar navbar-expand-md bg-body-tertiary  sticky-top">
@@ -27,7 +52,7 @@ function Header() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <div className="collapse navbar-collapse" id="navbarNavDropdown" ref={navbarRef}>
             <ul className="navbar-nav nav-underline">
               <li className="nav-item">
                 <Link to={"/"} className="a nav-link" aria-current="page">

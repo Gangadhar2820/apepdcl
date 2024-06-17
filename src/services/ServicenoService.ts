@@ -8,7 +8,7 @@ export interface Consumer {
   NICK_NAME: string;
   PARENT_NAME: string;
   CURRENT_USER: string;
-  PHONE_NO: string;
+  MOBILE_NUMBER: string;
   LOCATION: string;
 }
 
@@ -28,7 +28,7 @@ export async function getConsumerDataByServiceNo(
   let NICK_NAME = data?.NICK_NAME || "";
   let CURRENT_USER = data?.CURRENT_USER || "";
   let PARENT_NAME = data?.PARENT_NAME || "";
-  let PHONE_NO = data?.MOBILE_NUMBER || "";
+  let MOBILE_NUMBER = data?.MOBILE_NUMBER || "";
   let LOCATION = data?.LOCATION || "";
 
   let consumer: Consumer = {
@@ -39,7 +39,7 @@ export async function getConsumerDataByServiceNo(
     NICK_NAME:NICK_NAME,
     CURRENT_USER:CURRENT_USER,
     PARENT_NAME:PARENT_NAME,
-    PHONE_NO:PHONE_NO,
+    MOBILE_NUMBER:MOBILE_NUMBER,
     LOCATION:LOCATION
   };
   return consumer;
