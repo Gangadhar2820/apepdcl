@@ -70,8 +70,13 @@ function SearchAreaCode() {
                   aria-label="Default select example"
                 >
                   <option value="label">Area code</option>
+                  <option value="B202">B202 - Apandrapalem</option>
+                  <option value="B205">B205 - Burugupalem</option>
+                  <option value="B229">B229 - Tadapala</option>
                   <option value="B232">B232 - Tootipala</option>
                   <option value="B239">B239 - Mamidipalem</option>
+                  <option value="B251">B251 - Tootipala</option>
+                  <option value="B254">B254 - Ramarayudupalem</option>
                   <option value="B255">B255 - Jangalapalem</option>
                   <option value="B260">B260 - Adigarlapalem</option>
                   <option value="B261">B261 - Pothaluru</option>
