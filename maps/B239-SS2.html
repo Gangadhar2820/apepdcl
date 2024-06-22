@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B239-SS2</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      #mycanvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="mycanvas"></canvas>
+    </div>
+    <script>
+      const canvas = document.getElementById("mycanvas");
+      canvas.height = 500;
+      canvas.width = 500;
+      const ctx = canvas.getContext("2d");
+
+      ctx.translate(150, canvas.height - 100);
+
+      ctx.lineWidth = 2;
+      ctx.font = "14px serif";
+      ctx.strokeStyle = "blue";
+
+      ctx.beginPath();
+      ctx.moveTo(30, -30);
+      ctx.lineTo(60, 30);
+      ctx.lineTo(0, 30);
+      ctx.lineTo(30, -30);
+      ctx.stroke();
+      ctx.fillText("SS2", 20, 15);
+      ctx.closePath();
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(0, 30);
+      drawPole(-20, 30, "B1", "bottom");
+      ctx.moveTo(60, 30);
+      drawPole(80, 30, "A1", "bottom");
+      ctx.moveTo(86, 30);
+      drawPole(126, 30, "A1-1", "bottom");
+      ctx.moveTo(132, 30);
+      drawPole(172, 30, "A1-2", "bottom");
+      ctx.moveTo(178, 30);
+      drawPole(218, 30, "A1-3", "bottom");
+      ctx.moveTo(172, 24);
+      drawPole(172, -16, "A1-2/1", "right");
+      ctx.moveTo(172, -22);
+      drawPole(172, -62, "A1-2/2", "top");
+      ctx.moveTo(178, -62);
+      drawPole(218, -62, "A1-2/3", "bottom");
+      ctx.moveTo(224, -62);
+      drawPole(264, -62, "A1-2/4", "bottom");
+      ctx.moveTo(270, -62);
+      drawPole(310, -62, "A1-2/5", "bottom");
+      ctx.moveTo(264, -68);
+      drawPole(264, -102, "A1-2/4/1", "right");
+      ctx.moveTo(264, -108);
+      drawPole(264, -148, "A1-2/4/2", "right");
+      ctx.moveTo(264, -154);
+      drawPole(264, -194, "A1-2/4/3", "right");
+      ctx.moveTo(264, -200);
+      drawPole(264, -240, "A1-2/4/4", "right");
+
+      ctx.moveTo(80, 24);
+      drawPole(80, -6, "A2", "left");
+      ctx.moveTo(80, -12);
+      drawPole(80, -42, "A3", "right");
+      ctx.moveTo(80, -48);
+      drawPole(80, -78, "A4", "left");
+      ctx.moveTo(80, -84);
+      drawPole(80, -114, "A5", "left");
+      ctx.moveTo(80, -120);
+      drawPole(80, -150, "A6", "left");
+      ctx.moveTo(80, -156);
+      drawPole(80, -186, "A7", "left");
+      ctx.moveTo(80, -190);
+      drawPole(80, -220, "A8", "left");
+      ctx.moveTo(80, -226);
+      drawPole(80, -256, "A9", "left");
+      ctx.moveTo(74, -42);
+      drawPole(44, -42, "A3-1", "left");
+      ctx.moveTo(86, -78);
+      drawPole(116, -78, "A4-1", "top");
+
+      ctx.moveTo(86, -256);
+      drawPole(116, -256, "A10", "right");
+      ctx.moveTo(116, -262);
+      drawPole(116, -292, "A11", "right");
+      ctx.moveTo(116, -298);
+      drawPole(116, -328, "A12", "right");
+
+      ctx.closePath();
+
+
+      ctx.translate(-150, -(canvas.height - 100));
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B239-Mamidipalem (SS2)", canvas.width/2-100, 30);
+    </script>
+  </body>
+</html>

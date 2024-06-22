@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B239-SS1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      #mycanvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="mycanvas"></canvas>
+    </div>
+    <script>
+      const canvas = document.getElementById("mycanvas");
+      canvas.height = 700;
+      canvas.width = 650;
+      const ctx = canvas.getContext("2d");
+
+      ctx.translate(335, 250);
+
+      ctx.lineWidth = 2;
+      ctx.font = "14px serif";
+      ctx.strokeStyle = "blue";
+
+      ctx.beginPath();
+      ctx.moveTo(60, -20);
+      ctx.lineTo(90, 20);
+      ctx.lineTo(30, 20);
+      ctx.lineTo(60, -20);
+      ctx.stroke();
+      ctx.fillText("SS1", 50, 10);
+      ctx.closePath();
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(60, -20);
+      drawPole(60, -50, "A1", "right");
+      ctx.moveTo(60, -56);
+      drawPole(60, -80, "A2", "right");
+      ctx.moveTo(54, -80);
+      drawPole(-36, -80, "A3", "top");
+      ctx.moveTo(-42, -80);
+      drawPole(-72, -80, "A4", "top");
+      ctx.moveTo(-78, -80);
+      drawPole(-108, -80, "A5", "top");
+      ctx.moveTo(-114, -80);
+      drawPole(-144, -80, "A6", "top");
+      ctx.moveTo(-150, -80);
+      drawPole(-180, -80, "A7", "top");
+      ctx.moveTo(-36, -74);
+      drawPole(-36, -44, "A3-1", "right");
+      ctx.moveTo(-42, -44);
+      drawPole(-72, -44, "A3-2", "top");
+      ctx.moveTo(-78, -44);
+      drawPole(-108, -44, "A3-3", "top");
+      ctx.moveTo(-72, -38);
+      drawPole(-72, -8, "A3-2/1", "left");
+      ctx.moveTo(-66, -8);
+      drawPole(-36, -8, "A3-2/2", "bottom");
+      ctx.moveTo(-30, -8);
+      drawPole(0, -8, "A3-2/3", "top");
+      ctx.moveTo(-144, -74);
+      drawPole(-144, -44, "A6-1", "bottom");
+
+      ctx.moveTo(60, -20);
+      drawPole(120, -20, "B1", "bottom");
+      ctx.moveTo(126, -20);
+      drawPole(156, -20, "B2", "bottom");
+      ctx.moveTo(162, -20);
+      drawPole(192, -20, "B3", "bottom");
+      ctx.moveTo(198, -20);
+      drawPole(228, -20, "B4", "bottom");
+      ctx.moveTo(234, -20);
+      drawPole(264, -20, "B5", "bottom");
+      ctx.moveTo(264, -26);
+      drawPole(264, -56, "B6", "right");
+      ctx.moveTo(264, -62);
+      drawPole(264, -92, "B7", "right");
+      ctx.moveTo(228, -26);
+      drawPole(228, -56, "B4-1", "top");
+      ctx.moveTo(156, -26);
+      drawPole(156, -56, "B2-1", "top");
+
+      ctx.moveTo(60, 20);
+      drawPole(60, 40, "C1", "right");
+      ctx.moveTo(60, 46);
+      drawPole(60, 66, "C2", "right");
+      ctx.moveTo(60, 72);
+      drawPole(60, 92, "C3", "right");
+      ctx.moveTo(60, 98);
+      drawPole(60, 118, "C4", "right");
+      ctx.moveTo(60, 124);
+      drawPole(60, 144, "C5", "right");
+      ctx.moveTo(60, 150);
+      drawPole(60, 170, "C6", "right");
+      ctx.moveTo(60, 176);
+      drawPole(60, 196, "C7", "right");
+      ctx.moveTo(60, 202);
+      drawPole(60, 222, "C8", "right");
+      ctx.moveTo(60, 228);
+      drawPole(60, 248, "C9", "right");
+      ctx.moveTo(60, 254);
+      drawPole(60, 274, "C10", "right");
+      ctx.moveTo(60, 280);
+      drawPole(60, 300, "C11", "right");
+      ctx.moveTo(60, 306);
+      drawPole(60, 326, "C12", "right");
+      ctx.moveTo(60, 332);
+      drawPole(60, 352, "C13", "right");
+      ctx.moveTo(60, 358);
+      drawPole(60, 378, "C14", "right");
+      ctx.moveTo(60, 384);
+      drawPole(60, 404, "C15", "right");
+      ctx.moveTo(54, 404);
+      drawPole(24, 404, "C15-1", "top");
+      ctx.moveTo(18, 404);
+      drawPole(-12, 404, "C15-2", "bottom");
+      ctx.moveTo(-12, 398);
+      drawPole(-12, 368, "C15-2/1", "top");
+      ctx.moveTo(-18, 404, "C15-3");
+      drawPole(-48, 404, "C15-3", "top");
+
+      ctx.closePath();
+
+
+      ctx.translate(-335, -250);
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B239-Mamidipalem (SS1)", canvas.width/2-100, 70);
+    </script>
+  </body>
+</html>
