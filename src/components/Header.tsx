@@ -65,9 +65,9 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={"/maps"} className="nav-link">
+                <a href="/apepdcl/maps" className="nav-link">
                   View Maps
-                </Link>
+                </a>
               </li>
               <li className="nav-item dropdown">
                 <Link

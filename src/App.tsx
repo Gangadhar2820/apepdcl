@@ -9,9 +9,9 @@ import Header from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddConsumer from "./components/AddConsumer";
 import SearchAreaCode from "./components/SearchAreaCode";
-import Maps from "./components/Maps";
 import Error from "./components/Error";
 import SearchServiceNumber from "./components/SearchServiceNumber";
+import Home from "./components/Home";
 
 
 function App() {
@@ -20,14 +20,13 @@ function App() {
       <BrowserRouter basename="/apepdcl">
       <Header />
         <Routes>
-          <Route path="/" element={<SearchServiceNumber/>}/>
+          <Route path="/" element={<Home/>}/>
           <Route path="/addconsumer" element={<AddConsumer/>}/>
           <Route path="/searchserviceno" element={<SearchServiceNumber/>}>
           <Route path=":areacode/:serviceno" element={<SearchServiceNumber/>}>
           </Route>
           </Route>
           <Route path="/searchareacode" element={<SearchAreaCode/>}/>
-          <Route path="/maps" element={<Maps/>}/>
           <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>
