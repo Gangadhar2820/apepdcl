@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Consumer, getAreaWiseData } from "../services/ServicenoService";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Link } from "react-router-dom";
 
 function SearchAreaCode() {
   const [areacode, setAreacode] = useState("label");
@@ -11,6 +10,7 @@ function SearchAreaCode() {
   const [consumers, setConsumers] = useState<Consumer[] | null>();
   const [globalSearchValue, setGlobalSearchValue] = useState("");
   const [showTable, setShowTable] = useState(false);
+  const [debouncedSearchValue, setDebouncedSearchValue] = useState("");
 
   useEffect(() => {}, [consumers, areacode, showTable]);
 
@@ -43,16 +43,36 @@ function SearchAreaCode() {
     }
   };
 
-  const customServiceNoTemplate = (rowData: any) => {
-    console.log(rowData)
-    return (
-      
-        <Link to={`/searchserviceno/${areacode}/${rowData.SERVICE_NO}`} className="a nav-link" aria-current="page">
-          {rowData.SERVICE_NO}
-        </Link>
-      
-    );
+  const columns = useMemo(
+    () => [
+      { field: "SERVICE_NO", header: "Service No", sortable: true },
+      { field: "CONSUMER_NAME", header: "Consumer Name" },
+      { field: "NICK_NAME", header: "Nick Name" },
+      { field: "PARENT_NAME", header: "Parent Name" },
+      { field: "CURRENT_USER", header: "Current User" },
+      { field: "MOBILE_NUMBER", header: "Phone No" },
+      { field: "LOCATION", header: "Location", sortable: true },
+    ],
+    []
+  );
+
+  const debounce = (func: (...args: any[]) => void, delay: number) => {
+    let timer: NodeJS.Timeout;
+    return (...args: any[]) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
   };
+
+  const debouncedSetSearchValue = useCallback(
+    debounce((value) => setDebouncedSearchValue(value), 500),
+    []
+  );
+
+  useEffect(() => {
+    debouncedSetSearchValue(globalSearchValue);
+  }, [globalSearchValue, debouncedSetSearchValue]);
+
   return (
     <>
       <div className="container-fluid row">
@@ -141,31 +161,29 @@ function SearchAreaCode() {
                     stripedRows
                     tableStyle={{ minWidth: "50rem" }}
                     className="custom-datatable"
-                    globalFilter={globalSearchValue}
+                    globalFilter={debouncedSearchValue}
                     scrollable
                     scrollHeight="500px"
                   >
-                    <Column
-                      field="SERVICE_NO"
-                      sortable
-                      frozen
-                      alignFrozen="left"
-                      header="Service No  "
-                      body={customServiceNoTemplate}
-                    ></Column>
-                    <Column
-                      field="CONSUMER_NAME"
-                      header="Consumer Name"
-                    ></Column>
-                    <Column field="NICK_NAME" header="Nick Name"></Column>
-                    <Column field="PARENT_NAME" header="Parent Name"></Column>
-                    <Column field="CURRENT_USER" header="Current User"></Column>
-                    <Column field="MOBILE_NUMBER" header="Phone No"></Column>
-                    <Column
-                      field="LOCATION"
-                      sortable
-                      header="Location"
-                    ></Column>
+                    {columns.map((col, index) =>
+                      col.field === "SERVICE_NO" ? (
+                        <Column
+                          key={index}
+                          field={col.field}
+                          header={col.header}
+                          sortable={col.sortable}
+                          frozen
+                          alignFrozen="left"
+                        />
+                      ) : (
+                        <Column
+                          key={index}
+                          field={col.field}
+                          header={col.header}
+                          sortable={col.sortable}
+                        />
+                      )
+                    )}
                   </DataTable>
                 </div>
               </>

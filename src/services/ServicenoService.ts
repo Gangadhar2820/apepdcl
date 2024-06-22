@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export interface Consumer {
-  _ID: string;
+  _ID?: string;
   AREA_CODE: string;
   SERVICE_NO: string;
   CONSUMER_NAME: string;
@@ -57,6 +57,19 @@ export async function updateConsumer(areacode:string | null |undefined,serviceno
 
 }
 
+
+export async function addConsumer(areacode:string | any,data:Consumer|null|undefined){
+
+  const response = await axios.post(`https://apepdclserver.onrender.com/addconsumer/${areacode}`,data,{
+    headers:{
+      "Content-Type":"application/json"
+    }
+  })
+
+  return response;
+
+}
+
 export async function getAreaWiseData(areacode:string){
   const response =await  axios.get(`https://apepdclserver.onrender.com/searchareacode/${areacode}`);
   const data = await response.data;
@@ -64,6 +77,7 @@ export async function getAreaWiseData(areacode:string){
 
 }
   
+
 
 
 export {};
