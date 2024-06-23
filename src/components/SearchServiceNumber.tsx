@@ -97,7 +97,7 @@ function SearchServiceNumber() {
                   <option value="B229">B229 - Tadapala</option>
                   <option value="B232">B232 - Tootipala</option>
                   <option value="B239">B239 - Mamidipalem</option>
-                  <option value="B251">B251 - Tootipala</option>
+                  <option value="B251">B251 - K Tadapala</option>
                   <option value="B254">B254 - Ramarayudupalem</option>
                   <option value="B255">B255 - Jangalapalem</option>
                   <option value="B260">B260 - Adigarlapalem</option>
