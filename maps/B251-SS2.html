@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B251-SS2</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+      }
+      canvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas></canvas>
+    </div>
+    <script>
+      const canvas = document.querySelector("canvas");
+      canvas.height = 600;
+      canvas.width = 600;
+      const ctx = canvas.getContext("2d");
+      ctx.translate(450, 500);
+
+      (function drawTransformer(name) {
+        ctx.lineWidth = 2;
+        ctx.font = "14px serif";
+        ctx.strokeStyle = "blue";
+
+        ctx.beginPath();
+        ctx.moveTo(0, -30);
+        ctx.lineTo(30, 30);
+        ctx.lineTo(-30, 30);
+        ctx.lineTo(0, -30);
+        ctx.stroke();
+        ctx.fillText(name, -10, 15);
+        ctx.closePath();
+      })("SS2");
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(0,-30);
+      drawPole(0,-60,"A1","right");
+
+      ctx.moveTo(0,-66);
+      drawPole(0,-96,"A2","right");
+      ctx.moveTo(0,-102);
+      drawPole(0,-132,"A3","right");
+      ctx.moveTo(0,-138);
+      drawPole(0,-168,"A4","right");
+      ctx.moveTo(0,-174);
+      drawPole(0,-204,"A5","right");
+      ctx.moveTo(0,-210);
+      drawPole(0,-240,"A6","right");
+      ctx.moveTo(0,-246);
+      drawPole(0,-276,"A6-1","top");
+      ctx.moveTo(6,-276);
+      drawPole(36,-276,"A6-2","top");
+      ctx.moveTo(42,-276);
+      drawPole(72,-276,"A6-3","top");
+
+      ctx.moveTo(-6,-240);
+      drawPole(-56,-240,"A7","top");
+      ctx.moveTo(-62,-240);
+      drawPole(-102,-240,"A8","top");
+      ctx.moveTo(-108,-240);
+      drawPole(-158,-240,"A9","top");
+      ctx.moveTo(-164,-240);
+      drawPole(-214,-240,"A10","top");
+
+      ctx.moveTo(-214,-236);
+      drawPole(-214,-206,"A11","left");
+      ctx.moveTo(-214,-200);
+      drawPole(-214,-170,"DF A12","left");
+      ctx.moveTo(-214,-164);
+      drawPole(-214,-134,"A13","left");
+      ctx.moveTo(-214,-128);
+      drawPole(-214,-98,"A14","left");
+      ctx.moveTo(-214,-92);
+      drawPole(-214,-62,"A15","left");
+
+      ctx.moveTo(-208,-170);
+      drawPole(-158,-170,"A12-1","top");
+      ctx.moveTo(-152,-170);
+      drawPole(-102,-170,"A12-2","right");
+      ctx.moveTo(-102,-176);
+      drawPole(-102,-206,"","top");
+      ctx.moveTo(-102,-164);
+      drawPole(-102,-134,"A12-3","left");
+      ctx.moveTo(-102,-128);
+      drawPole(-102,-98,"A12-4","left");
+      ctx.moveTo(-96,-134);
+      drawPole(-66,-134,"A12-3/1","bottom");
+
+      ctx.moveTo(-158,-164);
+      drawPole(-158,-134,"A12-1/1","left");
+      ctx.moveTo(-158,-128);
+      drawPole(-158,-98,"A12-1/2","left");
+
+
+      ctx.closePath();
+
+
+      ctx.translate(-450, -500);
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B251-K Tadapala (SS2)", canvas.width / 2 - 100, 30);
+    </script>
+  </body>
+</html>
