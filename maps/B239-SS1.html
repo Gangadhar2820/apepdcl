@@ -27,11 +27,12 @@
     </div>
     <script>
       const canvas = document.getElementById("mycanvas");
-      canvas.height = 700;
+      canvas.height = 800;
       canvas.width = 650;
       const ctx = canvas.getContext("2d");
 
       ctx.translate(335, 250);
+
 
       ctx.lineWidth = 2;
       ctx.font = "14px serif";
@@ -170,6 +171,18 @@
       drawPole(-12, 368, "C15-2/1", "top");
       ctx.moveTo(-18, 404, "C15-3");
       drawPole(-48, 404, "C15-3", "top");
+
+      ctx.moveTo(60, 410);
+      drawPole(60, 430, "C16", "right");
+      ctx.moveTo(60, 436);
+      drawPole(60, 456, "C17", "right");
+      ctx.moveTo(60, 462);
+      drawPole(60, 482, "C18", "right");
+      ctx.moveTo(60, 488);
+      drawPole(60, 508, "C19", "right");
+      ctx.moveTo(60, 514);
+      drawPole(60, 534, "C20", "right");
+      
 
       ctx.closePath();
 

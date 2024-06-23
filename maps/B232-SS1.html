@@ -28,10 +28,10 @@
     <script>
       const canvas = document.getElementById("mycanvas");
       canvas.height = 800;
-      canvas.width = 600;
+      canvas.width = 800;
       const ctx = canvas.getContext("2d");
 
-      ctx.translate(300, 370);
+      ctx.translate(480, 370);
 
       ctx.lineWidth = 2;
       ctx.font = "14px serif";
@@ -99,58 +99,52 @@
       drawPole(30,300,"B6","left");
       ctx.moveTo(30,306);
       drawPole(30,346,"B7","left");
-      ctx.moveTo(30,352);
-      drawPole(30,392,"B8","left");
       ctx.moveTo(30,-30);
       drawPole(30,-70,"A1","left");
       ctx.moveTo(36,-70);
       drawPole(56,-70,"A2","bottom");
       ctx.moveTo(62,-70);
-      drawPole(82,-70,"A3","bottom");
-      ctx.moveTo(88,-70);
-      drawPole(108,-70,"A4","bottom");
-      ctx.moveTo(114,-70);
-      drawPole(134,-70,"A5","bottom");
-      ctx.moveTo(140,-70);
-      drawPole(160,-70,"A6","bottom");
-      ctx.moveTo(166,-70);
-      drawPole(186,-70,"A7","bottom");
-      ctx.moveTo(192,-70);
-      drawPole(212,-70,"A8","bottom");
-      ctx.moveTo(218,-70);
-      drawPole(238,-70,"A9","bottom");
-      ctx.moveTo(244,-70);
-      drawPole(264,-70,"A10","right");
-      ctx.moveTo(264,-64);
-      drawPole(264,-24,"A11","right");
-      ctx.moveTo(264,-16);
-      drawPole(264,24,"A12","right");
+      drawPole(102,-70,"A3","bottom");
+      ctx.moveTo(108,-70);
+      drawPole(128,-70,"A4","bottom");
+      ctx.moveTo(134,-70);
+      drawPole(154,-70,"A5","bottom");
+      ctx.moveTo(160,-70);
+      drawPole(180,-70,"A6","bottom");
+      ctx.moveTo(186,-70);
+      drawPole(206,-70,"A7","bottom");
+      ctx.moveTo(212,-70);
+      drawPole(232,-70,"A8","bottom");
+      ctx.moveTo(238,-70);
+      drawPole(258,-70,"A9","bottom");
+      ctx.moveTo(264,-70);
+      drawPole(284,-70,"A10","right");
+      ctx.moveTo(284,-64);
+      drawPole(284,-24,"A11","right");
+      ctx.moveTo(284,-16);
+      drawPole(284,24,"A12","right");
 
-      ctx.moveTo(82,-76);
-      drawPole(82,-106,"A3-1","right");
-      ctx.moveTo(82,-112);
-      drawPole(82,-142,"A3-2","left");
-      ctx.moveTo(82,-148);
-      drawPole(82,-178,"A3-3","right");
-      ctx.moveTo(82,-184);
-      drawPole(82,-214,"A3-4","top");
-      ctx.moveTo(88,-214);
-      drawPole(118,-214,"A3-5","right");
-      ctx.moveTo(118,-220);
-      drawPole(118,-250,"A3-6","right");
+      ctx.moveTo(102,-76);
+      drawPole(102,-106,"A3-1","right");
+      ctx.moveTo(102,-112);
+      drawPole(102,-142,"A3-2","right");
+      ctx.moveTo(102,-148);
+      drawPole(102,-178,"A3-3","right");
+      ctx.moveTo(102,-184);
+      drawPole(102,-214,"A3-4","top");
+      ctx.moveTo(108,-214);
+      drawPole(128,-214,"A3-5","right");
+      ctx.moveTo(128,-220);
+      drawPole(128,-250,"A3-6","right");
 
       ctx.moveTo(30,-76);
       drawPole(30,-116,"A1-1","right");
-      ctx.moveTo(30,-122);
-      ctx.lineTo(30,-128);
-      ctx.lineTo(-10,-128);
-      drawPole(-10,-162,"A1-2","bottom");
-      drawPole(-10,-162,"A1-2","bottom");
-      drawPole(-10,-162,"A1-2","bottom");
-      ctx.moveTo(-4,-162);
-      drawPole(36,-162,"A1-2/1B","top");
-      ctx.moveTo(-16,-162);
-      drawPole(-56,-162,"A1-2/1A","left");
+      ctx.lineTo(30,-122);
+      drawPole(30,-162,"A1-2","top");
+      ctx.moveTo(36,-162);
+      drawPole(56,-162,"A1-2/1B","bottom");
+      ctx.moveTo(24,-162);
+      drawPole(-6,-162,"A1-2/1A","left");
       ctx.moveTo(24,-116);
       drawPole(-56,-116,"A1-1/1","top");
       ctx.moveTo(-56,-110);
@@ -159,20 +153,31 @@
       drawPole(-102,-70,"A1-1/3","top");
       ctx.moveTo(-108,-70);
       drawPole(-148,-70,"A1-1/4","bottom");
-      ctx.moveTo(-10,-168);
-      drawPole(-10,-228,"A1-3","top");
-      ctx.moveTo(-4,-228);
-      drawPole(26,-228,"A1-3/1","top");
-      ctx.moveTo(-16,-228);
-      drawPole(-46,-228,"A1-4","bottom");
-      ctx.moveTo(-52,-228);
-      drawPole(-82,-228,"A1-5","top");
-      ctx.moveTo(-46,-234);
-      drawPole(-46,-274,"A1-4/1","top");
-      ctx.moveTo(-40,-274);
-      drawPole(10,-274,"A1-4/2","top");
+      ctx.moveTo(-154,-70);
+      drawPole(-174,-70,"A1-1/5","top");
+      ctx.moveTo(-174,-64);
+      drawPole(-174,-24,"A1-1/6","right");
+      ctx.moveTo(-174,-18);
+      drawPole(-174,12,"A1-1/7","right");
+      ctx.moveTo(-174,18);
+      drawPole(-174,48,"A1-1/8","right");
+      ctx.moveTo(-174,54);
+      drawPole(-174,84,"A1-1/9","right");
 
-    
+
+      ctx.moveTo(30,-184);
+      drawPole(30,-228,"A1-3","top");
+      ctx.moveTo(36,-228);
+      drawPole(56,-228,"A1-3/1","bottom");
+      ctx.moveTo(24,-228);
+      drawPole(-16,-228,"A1-4","bottom");
+      ctx.moveTo(-22,-228);
+      drawPole(-52,-228,"A1-5","top");
+      ctx.moveTo(-16,-234);
+      drawPole(-16,-274,"A1-4/1","top");
+      ctx.moveTo(-10,-274);
+      drawPole(30,-274,"A1-4/2","top");
+
 
       ctx.closePath();
 
@@ -182,6 +187,7 @@
       ctx.fillStyle = "dodgerblue";
       ctx.font = "24px serif";
       ctx.fillText("B232-Tootipala (SS1)", canvas.width/2-100, 30);
+
     </script>
   </body>
 </html>

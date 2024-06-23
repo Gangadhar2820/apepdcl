@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B260-SS2</title>
+    <title>B205-SS5</title>
     <style>
       * {
         padding: 0;
@@ -32,7 +32,7 @@
       canvas.height = 500;
       canvas.width = 700;
       const ctx = canvas.getContext("2d");
-      ctx.translate(500, 350);
+      ctx.translate(600, 250);
 
       (function drawTransformer(name) {
         ctx.lineWidth = 2;
@@ -47,7 +47,7 @@
         ctx.stroke();
         ctx.fillText(name, -10, 15);
         ctx.closePath();
-      })("SS2");
+      })("SS5");
 
       const k = 6; // pole circle radius
 
@@ -87,25 +87,38 @@
       }
 
       ctx.beginPath();
-      ctx.moveTo(0,-30);
-      drawPole(0,-70,"A1","right");
+      ctx.moveTo(-30,30);
+      drawPole(-70,30,"A1","bottom")
+      ctx.moveTo(-76,30);
+      drawPole(-116,30,"A2","bottom")
+      ctx.moveTo(-122,30);
+      drawPole(-162,30,"A3","bottom")
+      ctx.moveTo(-168,30);
+      drawPole(-208,30,"A4","bottom")
+      ctx.moveTo(-214,30);
+      drawPole(-254,30,"A5","bottom")
+      ctx.moveTo(-260,30);
+      drawPole(-300,30,"A6","bottom")
 
-      ctx.moveTo(-6,-70);
-      drawPole(-46,-70,"A2","bottom");
-      ctx.moveTo(-52,-70);
-      drawPole(-92,-70,"A3","bottom");
-      ctx.moveTo(-46,-76);
-      drawPole(-46,-116,"A2-1","top");
+      ctx.moveTo(-162,24);
+      drawPole(-162,-16,"A3-1","top")
+
+      ctx.moveTo(-208,24);
+      drawPole(-208,-16,"A4-1","top")
+
+      ctx.moveTo(0,-30);
+      drawPole(0,-70,"B1","top");
+
 
 
       ctx.closePath();
 
 
-      ctx.translate(-500, -350);
+      ctx.translate(-600, -250);
       ctx.direction = "ltr";
       ctx.fillStyle = "dodgerblue";
       ctx.font = "24px serif";
-      ctx.fillText("B260-Adigarlapalem (SS2)", canvas.width / 2 - 100, 30);
+      ctx.fillText("B205-Burugupalem (SS5)", canvas.width / 2 - 100, 30);
     </script>
   </body>
 </html>

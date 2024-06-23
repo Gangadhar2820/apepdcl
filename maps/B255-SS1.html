@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B261-SS1</title>
+    <title>B255-SS1</title>
     <style>
       * {
         margin: 0px;
@@ -32,6 +32,7 @@
       const ctx = canvas.getContext("2d");
 
       ctx.translate(canvas.width/2, canvas.height/2);
+      ctx.rotate(-1.585);
 
       ctx.lineWidth = 2;
       ctx.font = "14px serif";
@@ -94,11 +95,11 @@
       ctx.moveTo(-48,-70);
       drawPole(-88,-70,"A4","top");
       ctx.moveTo(-96,-70);
-      drawPole(-136,-70,"","top");
+      drawPole(-136,-70,"A5","top");
       ctx.moveTo(30,30);
       drawPole(30,70,"B1","left");
       ctx.moveTo(36,70);
-      drawPole(76,70,"","top");
+      drawPole(76,70,"B1-1","top");
       ctx.moveTo(30,76);
       drawPole(30,116,"B2","left");
       ctx.moveTo(36,116);
@@ -126,7 +127,9 @@
       ctx.closePath();
 
 
+      ctx.rotate(1.585);
       ctx.translate(-canvas.width/2, -canvas.height/2);
+
       ctx.direction = "ltr";
       ctx.fillStyle = "dodgerblue";
       ctx.font = "24px serif";

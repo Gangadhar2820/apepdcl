@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>B260-SS2</title>
+    <title>B260-SS3</title>
     <style>
       * {
         padding: 0;
@@ -30,9 +30,9 @@
     <script>
       const canvas = document.querySelector("canvas");
       canvas.height = 500;
-      canvas.width = 700;
+      canvas.width = 600;
       const ctx = canvas.getContext("2d");
-      ctx.translate(500, 350);
+      ctx.translate(400, 300);
 
       (function drawTransformer(name) {
         ctx.lineWidth = 2;
@@ -47,7 +47,7 @@
         ctx.stroke();
         ctx.fillText(name, -10, 15);
         ctx.closePath();
-      })("SS2");
+      })("SS3");
 
       const k = 6; // pole circle radius
 
@@ -87,25 +87,46 @@
       }
 
       ctx.beginPath();
-      ctx.moveTo(0,-30);
-      drawPole(0,-70,"A1","right");
+      ctx.moveTo(30,30);
+      drawPole(70,30,"B1","top");
+      ctx.moveTo(-30,30);
+      drawPole(-70,30,"A1","bottom");
+      ctx.moveTo(-76,30);
+      drawPole(-106,30,"A2","bottom");
+      ctx.moveTo(-112,30);
+      drawPole(-142,30,"A3","bottom");
+      ctx.moveTo(-148,30);
+      drawPole(-178,30,"A4","bottom");
+      ctx.moveTo(-184,30);
+      drawPole(-214,30,"A4-1","bottom");
+      ctx.moveTo(-178,24);
+      drawPole(-178,-6,"A5","right");
+      ctx.moveTo(-178,-12);
+      drawPole(-178,-42,"A6","top");
+      ctx.moveTo(-178,-64);
+      drawPole(-178,-94,"","top");
 
-      ctx.moveTo(-6,-70);
-      drawPole(-46,-70,"A2","bottom");
-      ctx.moveTo(-52,-70);
-      drawPole(-92,-70,"A3","bottom");
-      ctx.moveTo(-46,-76);
-      drawPole(-46,-116,"A2-1","top");
 
+      ctx.moveTo(-184,-42);
+      drawPole(-214,-42,"A7","top");
+      ctx.moveTo(-220,-42);
+      drawPole(-250,-42,"A8","top");
+      ctx.moveTo(-172,-42);
+      drawPole(-122,-42,"","top");
+      ctx.moveTo(-116,-42);
+      drawPole(-66,-42,"","top");
+
+     
 
       ctx.closePath();
 
 
-      ctx.translate(-500, -350);
+      ctx.translate(-400, -300);
       ctx.direction = "ltr";
       ctx.fillStyle = "dodgerblue";
       ctx.font = "24px serif";
-      ctx.fillText("B260-Adigarlapalem (SS2)", canvas.width / 2 - 100, 30);
+      ctx.fillText("B260-Adigarlapalem (SS3)", canvas.width / 2 - 100, 30);
+      ctx.fillText("Mamidithota",canvas.width/2-100,60)
     </script>
   </body>
 </html>
