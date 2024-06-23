@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B232-SS3</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      #mycanvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="mycanvas"></canvas>
+    </div>
+    <script>
+      const canvas = document.getElementById("mycanvas");
+      canvas.height = 550;
+      canvas.width = 600;
+      const ctx = canvas.getContext("2d");
+
+      ctx.translate(canvas.width/2, canvas.height - 100);
+
+      ctx.lineWidth = 2;
+      ctx.font = "14px serif";
+      ctx.strokeStyle = "blue";
+
+      ctx.beginPath();
+      ctx.moveTo(30, -30);
+      ctx.lineTo(60, 30);
+      ctx.lineTo(0, 30);
+      ctx.lineTo(30, -30);
+      ctx.stroke();
+      ctx.fillText("SS3", 20, 15);
+      ctx.closePath();
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+
+      ctx.beginPath();
+      ctx.moveTo(30,-30);
+      drawPole(30,-70,"A1","left");
+      ctx.moveTo(30,-76);
+      drawPole(30,-116,"A2","left");
+      ctx.moveTo(30,-122);
+      drawPole(30,-162,"A3","left");
+      ctx.moveTo(30,-168);
+      drawPole(30,-208,"A4","left");
+      ctx.moveTo(30,-214);
+      drawPole(30,-254,"A5","left");
+      ctx.moveTo(30,-260);
+      drawPole(30,-300,"A6","left");
+      ctx.moveTo(30,-306);
+      drawPole(30,-346,"A7","top");
+      ctx.moveTo(24,-346);
+      drawPole(-16,-346,"A7-1A","left");
+      ctx.moveTo(36,-346);
+      drawPole(76,-346,"A8","top");
+      ctx.moveTo(82,-346);
+      drawPole(112,-346,"A9","top");
+      ctx.moveTo(118,-346);
+      drawPole(158,-346,"A10","top");
+      ctx.moveTo(164,-346);
+      drawPole(204,-346,"","left");
+
+      ctx.moveTo(36,-162);
+      drawPole(86,-162,"A3-1","right");
+      ctx.moveTo(86,-168);
+      drawPole(86,-208,"A3-2","right");
+      ctx.moveTo(86,-214);
+      drawPole(86,-254,"A3-3","right");
+      ctx.moveTo(86,-156);
+      drawPole(86,-116,"A3-1/1","right");
+
+      ctx.moveTo(30,30);
+      drawPole(120,30,"B1","top");
+
+
+      ctx.closePath();
+
+
+      ctx.translate(-canvas.width/2, -(canvas.height - 100));
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B232-Tootipala (SS3)", canvas.width/2-100, 30);
+    </script>
+  </body>
+</html>

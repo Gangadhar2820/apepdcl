@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B260-SS1</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+      }
+      canvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas></canvas>
+    </div>
+    <script>
+      const canvas = document.querySelector("canvas");
+      canvas.height = 500;
+      canvas.width = 600;
+      const ctx = canvas.getContext("2d");
+      ctx.translate(400, 400);
+
+      (function drawTransformer(name) {
+        ctx.lineWidth = 2;
+        ctx.font = "14px serif";
+        ctx.strokeStyle = "blue";
+
+        ctx.beginPath();
+        ctx.moveTo(0, -30);
+        ctx.lineTo(30, 30);
+        ctx.lineTo(-30, 30);
+        ctx.lineTo(0, -30);
+        ctx.stroke();
+        ctx.fillText(name, -10, 15);
+        ctx.closePath();
+      })("SS1");
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(0,30);
+      drawPole(0,60,"A1","bottom");
+      ctx.moveTo(-6,60);
+      drawPole(-46,60,"","left");
+      ctx.moveTo(0,-30);
+      drawPole(0,-60,"","left");
+      ctx.moveTo(6,60);
+      drawPole(66,60,"A2","bottom");
+      ctx.moveTo(66,54);
+      drawPole(66,24,"A3","right");
+      ctx.moveTo(66,18);
+      drawPole(66,-12,"A4","right");
+      ctx.moveTo(66,-18);
+      drawPole(66,-48,"A5","right");
+      ctx.moveTo(66,-52);
+      drawPole(66,-82,"A6","right");
+      ctx.moveTo(66,-88);
+      drawPole(46,-128,"A7","right");
+      ctx.moveTo(46,-134);
+      drawPole(46,-174,"A8","right");
+      ctx.moveTo(46,-180);
+      drawPole(46,-200,"A9","right");
+      ctx.moveTo(46,-206);
+      drawPole(46,-266,"A10","right");
+      ctx.moveTo(46,-272);
+      drawPole(46,-302,"A11","right");
+      ctx.moveTo(40,-266);
+      drawPole(10,-266,"A10-1","top");
+      ctx.moveTo(4,-266);
+      drawPole(-26,-266,"A10-2","left");
+      ctx.moveTo(10,-260);
+      drawPole(10,-240,"A10-1/1","left");
+      ctx.moveTo(40,-266);
+      drawPole(10,-266,"A10-1","top");
+      ctx.moveTo(40,-200);
+      drawPole(10,-200,"A9-1","top");
+      ctx.moveTo(4,-200);
+      drawPole(-66,-200,"A9-2","top");
+      ctx.moveTo(-72,-200);
+      drawPole(-102,-200,"A9-3","top");
+      ctx.moveTo(-108,-200);
+      drawPole(-138,-200,"A9-4","top");
+      ctx.moveTo(-144,-200);
+      drawPole(-174,-200,"A9-5","top");
+      ctx.moveTo(-180,-200);
+      drawPole(-210,-200,"A9-6","top");
+      ctx.moveTo(40,-174);
+      drawPole(-30,-174,"A8-1","bottom");
+
+      
+      ctx.closePath();
+
+
+      ctx.translate(-400, -400);
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B260-Adigarlapalem (SS1)", canvas.width / 2 - 100, 30);
+    </script>
+  </body>
+</html>

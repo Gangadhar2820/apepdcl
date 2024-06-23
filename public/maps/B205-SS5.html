@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B205-SS5</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+      }
+      canvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas></canvas>
+    </div>
+    <script>
+      const canvas = document.querySelector("canvas");
+      canvas.height = 500;
+      canvas.width = 700;
+      const ctx = canvas.getContext("2d");
+      ctx.translate(600, 250);
+
+      (function drawTransformer(name) {
+        ctx.lineWidth = 2;
+        ctx.font = "14px serif";
+        ctx.strokeStyle = "blue";
+
+        ctx.beginPath();
+        ctx.moveTo(0, -30);
+        ctx.lineTo(30, 30);
+        ctx.lineTo(-30, 30);
+        ctx.lineTo(0, -30);
+        ctx.stroke();
+        ctx.fillText(name, -10, 15);
+        ctx.closePath();
+      })("SS5");
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(-30,30);
+      drawPole(-70,30,"A1","bottom")
+      ctx.moveTo(-76,30);
+      drawPole(-116,30,"A2","bottom")
+      ctx.moveTo(-122,30);
+      drawPole(-162,30,"A3","bottom")
+      ctx.moveTo(-168,30);
+      drawPole(-208,30,"A4","bottom")
+      ctx.moveTo(-214,30);
+      drawPole(-254,30,"A5","bottom")
+      ctx.moveTo(-260,30);
+      drawPole(-300,30,"A6","bottom")
+
+      ctx.moveTo(-162,24);
+      drawPole(-162,-16,"A3-1","top")
+
+      ctx.moveTo(-208,24);
+      drawPole(-208,-16,"A4-1","top")
+
+      ctx.moveTo(0,-30);
+      drawPole(0,-70,"B1","top");
+
+
+
+      ctx.closePath();
+
+
+      ctx.translate(-600, -250);
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B205-Burugupalem (SS5)", canvas.width / 2 - 100, 30);
+    </script>
+  </body>
+</html>

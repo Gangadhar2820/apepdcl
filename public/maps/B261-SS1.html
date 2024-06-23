@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B261-SS1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      #mycanvas {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="mycanvas"></canvas>
+    </div>
+    <script>
+      const canvas = document.getElementById("mycanvas");
+      canvas.height = 550;
+      canvas.width = 600;
+      const ctx = canvas.getContext("2d");
+
+      ctx.translate(300, canvas.height - 100);
+
+      ctx.lineWidth = 2;
+      ctx.font = "14px serif";
+      ctx.strokeStyle = "blue";
+
+      ctx.beginPath();
+      ctx.moveTo(30, -30);
+      ctx.lineTo(60, 30);
+      ctx.lineTo(0, 30);
+      ctx.lineTo(30, -30);
+      ctx.stroke();
+      ctx.fillText("SS1", 20, 15);
+      ctx.closePath();
+
+      const k = 6; // pole circle radius
+
+      function markPole(x, y, poleName, namePos) {
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(x, y, k, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = "12px serif";
+
+        switch (namePos) {
+          case "top":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y - 12);
+            break;
+          case "bottom":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x - 10, y + 20);
+            break;
+          case "right":
+            ctx.direction = "ltr";
+            ctx.fillText(poleName, x + 10, y + 4);
+            break;
+          case "left":
+            ctx.direction = "rtl";
+            ctx.fillText(poleName, x - 10, y + 4);
+            break;
+        }
+      }
+
+      function drawPole(x, y, poleName, namePos) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        markPole(x, y, poleName, namePos);
+      }
+
+
+      ctx.beginPath();
+      ctx.moveTo(30,-30);
+      drawPole(30,-70,"A1","left");
+      ctx.moveTo(36,-70);
+      drawPole(76,-70,"A2","right");
+      ctx.moveTo(76,-76);
+      drawPole(76,-116,"A3","right");
+      ctx.moveTo(70,-116);
+      drawPole(30,-116,"A4","left");
+      ctx.moveTo(30,-122);
+      drawPole(30,-162,"A5","left");
+      ctx.moveTo(36,-162);
+      drawPole(76,-162,"A5-1","bottom");
+      ctx.moveTo(30,-168);
+      drawPole(30,-208,"A6","left");
+      ctx.moveTo(36,-208);
+      drawPole(76,-208,"A6-1","bottom");
+      ctx.moveTo(82,-208);
+      drawPole(122,-208,"A6-2","right");
+      ctx.moveTo(122,-216);
+      drawPole(122,-256,"A6-2/1B","right");
+      ctx.moveTo(122,-204);
+      drawPole(122,-164,"A6-2/1A","right");
+      ctx.moveTo(122,-158);
+      drawPole(122,-118,"A6-2/2A","right");
+      ctx.moveTo(30,-214);
+      drawPole(30,-254,"A7","right");
+      ctx.moveTo(24,-254);
+      drawPole(-16,-254,"A7-1","bottom");
+      ctx.moveTo(-22,-254);
+      drawPole(-62,-254,"A7-2","left");
+      ctx.moveTo(30,-260);
+      drawPole(30,-300,"A8","top");
+      ctx.moveTo(36,-300);
+      drawPole(76,-300,"A9","top");
+      ctx.moveTo(82,-300);
+      drawPole(122,-300,"A10","top");
+      ctx.moveTo(128,-300);
+      drawPole(168,-300,"","top");
+
+      ctx.closePath();
+
+
+      ctx.translate(-250, -(canvas.height - 100));
+      ctx.direction = "ltr";
+      ctx.fillStyle = "dodgerblue";
+      ctx.font = "24px serif";
+      ctx.fillText("B261-Pothuluru (SS1)", canvas.width/2-100, 30);
+    </script>
+  </body>
+</html>
