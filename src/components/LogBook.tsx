@@ -158,6 +158,8 @@ function LogBook() {
                     <option value="5020">5020 - Tootipala</option>
                     <option value="5030">5030 - Tootipala</option>
                     <option value="5073">5073 - K Tootipala</option>
+                    <option value="5081">5081 - K Tootipala</option>
+                    <option value="5077">5077 - Ramarayudupalem</option>
                     <option value="5072">5072 - Mamidipalem</option>
                     <option value="5079">5079 - Adigarlapalem</option>
                     <option value="5078">5078 - Pothaluru</option>
