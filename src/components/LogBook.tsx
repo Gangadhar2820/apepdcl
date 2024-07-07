@@ -12,6 +12,8 @@ function LogBook() {
   const [mobilenumber, setMobilenumber] = useState("");
   const [money, setMoney] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  const [reason,setReason] = useState("");
+  const [location,setLocation] = useState("");
 
   const [isAreaCodeValid, setIsAreaCodeValid] = useState(false);
   const [isServiceNoValid, setIsServiceNoValid] = useState(false);
@@ -53,6 +55,8 @@ function LogBook() {
         CONSUMER_NAME: consumername,
         MONEY: money,
         MOBILE_NUMBER: mobilenumber,
+        LOCATION:location,
+        REASON:reason
       }).then((res) => {
         setIsUploading(false);
       });
@@ -223,6 +227,35 @@ function LogBook() {
                 </td>
               </tr>
 
+              <tr>
+                <th scope="row">Location</th>
+                <td>
+                  <input
+                    style={{ width: "100%" }}
+                    className="form-control p-2"
+                    type="text"
+                    value={location}
+                    onChange={(e) => {
+                      setLocation(e.target.value);
+                    }}
+                  ></input>
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Reason</th>
+                <td>
+                  <textarea
+                    style={{ width: "100%" }}
+                    className="form-control p-2"
+                    value={reason}
+                    onChange={(e) => {
+                      setReason(e.target.value);
+                    }}
+                  ></textarea>
+                </td>
+              </tr>
+
               <tr className="">
                 <td className="" colSpan={2}>
                   <div className="container-fluid d-flex justify-content-end">
@@ -243,8 +276,9 @@ function LogBook() {
           <Column field="CONSUMER_NAME" header="Consumer name"></Column>
           <Column field="MONEY" header="Money"></Column>
           <Column field="MOBILE_NUMBER" header="Phone no"></Column>
+          <Column field="LOCATION" header="Location"></Column>
+          <Column field="REASON" header="Reason"></Column>
           <Column body={deleteLogButton}></Column>
-
         </DataTable>
       </div>
     </>
