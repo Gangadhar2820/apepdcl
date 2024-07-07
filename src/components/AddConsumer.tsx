@@ -124,7 +124,7 @@ function AddConsumer() {
                       setAreacode(e.target.value.toString());
                     }}
                   >
-                    <option value="label">Area code</option>
+                    <option value="label"> Area code </option>
                     <option value="B202">B202 - Apandrapalem</option>
                     <option value="B205">B205 - Burugupalem</option>
                     <option value="B229">B229 - Tadapala</option>
@@ -135,6 +135,21 @@ function AddConsumer() {
                     <option value="B255">B255 - Jangalapalem</option>
                     <option value="B260">B260 - Adigarlapalem</option>
                     <option value="B261">B261 - Pothaluru</option>
+
+                    <option value="label">--------- AGL ---------</option>
+
+                    <option value="5001">5001 - Apandrapalem</option>
+                    <option value="2410">2410 - Burugupalem</option>
+                    <option value="5004">5004 - Burugupalem</option>
+                    <option value="5018">5018 - Tadapala</option>
+                    <option value="2411">2411 - Tootipala</option>
+                    <option value="5020">5020 - Tootipala</option>
+                    <option value="5030">5030 - Tootipala</option>
+                    <option value="5073">5073 - K Tootipala</option>
+                    <option value="5072">5072 - Mamidipalem</option>
+                    <option value="5079">5079 - Adigarlapalem</option>
+                    <option value="5078">5078 - Pothaluru</option>
+
                   </select>
                 </td>
               </tr>
