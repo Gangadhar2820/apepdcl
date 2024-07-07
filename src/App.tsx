@@ -12,6 +12,7 @@ import SearchAreaCode from "./components/SearchAreaCode";
 import Error from "./components/Error";
 import SearchServiceNumber from "./components/SearchServiceNumber";
 import Home from "./components/Home";
+import LogBook from "./components/LogBook";
 
 
 function App() {
@@ -22,11 +23,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/addconsumer" element={<AddConsumer/>}/>
-          <Route path="/searchserviceno" element={<SearchServiceNumber/>}>
-          <Route path=":areacode/:serviceno" element={<SearchServiceNumber/>}>
-          </Route>
-          </Route>
+          <Route path="/searchserviceno" element={<SearchServiceNumber/>}/>
           <Route path="/searchareacode" element={<SearchAreaCode/>}/>
+          <Route path="/logbook" element={<LogBook/>}/>
           <Route path="*" element={<Error/>} />
         </Routes>
       </BrowserRouter>
